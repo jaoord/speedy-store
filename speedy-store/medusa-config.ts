@@ -1,5 +1,5 @@
 import { loadEnv, defineConfig } from '@medusajs/framework/utils'
-
+import { B2B_MODULE } from './src/modules/b2b';
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
@@ -12,5 +12,10 @@ module.exports = defineConfig({
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
+  },
+  modules: {
+    [B2B_MODULE]: {
+      resolve: './src/modules/b2b',
+    },
   }
 })
